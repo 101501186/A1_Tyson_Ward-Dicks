@@ -10,6 +10,14 @@
     android:padding="26dp"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Payments App"
+        app:titleTextColor="@android:color/white" />
+
     <EditText
         android:id="@+id/work_Hours"
         android:layout_width="match_parent"
@@ -33,13 +41,5 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnView_List"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Payments List"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/Navy_Blue" />
 
 </LinearLayout>

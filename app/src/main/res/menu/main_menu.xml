@@ -5,6 +5,6 @@
     <item
         android:id="@+id/action_view_list"
         android:title="View Payments List"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>
 

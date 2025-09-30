@@ -13,36 +13,35 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText workHoursInput, hourlyRateInput;
-    Button btnSubmit, btnViewList;
+    Button btnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        MaterialToolbar toolbar = findViewById(R.id.topAppBar);
+        setSupportActionBar(toolbar);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Get the UI references
+        // Get UI references
         workHoursInput = findViewById(R.id.work_Hours);
         hourlyRateInput = findViewById(R.id.hours_Rate);
         btnSubmit = findViewById(R.id.btnSubmit);
-        btnViewList = findViewById(R.id.btnView_List);
 
         // Handle Calculate button
         btnSubmit.setOnClickListener(v -> calculatePay());
-
-        // Handle View List button
-        btnViewList.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-            startActivity(intent);
-        });
     }
 
     private void calculatePay() {
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             totalPayBeforeTax = regularPay + overtimePay;
         }
 
-        //  Tax and net pay
+        // Tax and net pay
         double tax = totalPayBeforeTax * 0.18;
         double totalPayAfterTax = totalPayBeforeTax - tax;
 
@@ -108,4 +107,23 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("OK", null)
                 .show();
     }
+
+    // Inflate menu
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    // Handle menu item click
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == R.id.action_view_list) {
+            Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
+

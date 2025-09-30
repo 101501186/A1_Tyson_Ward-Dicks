@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         String hoursStr = workHoursInput.getText().toString().trim();
         String rateStr = hourlyRateInput.getText().toString().trim();
 
+        if (hoursStr.isEmpty() || rateStr.isEmpty()) {
+            Toast.makeText(this, "Please enter both hours and hourly rate", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 
 }

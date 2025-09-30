@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btnViewList = findViewById(R.id.btnView_List);
 
 
+        btnSubmit.setOnClickListener(v -> calculatePay());
     }
 
     private void calculatePay() {

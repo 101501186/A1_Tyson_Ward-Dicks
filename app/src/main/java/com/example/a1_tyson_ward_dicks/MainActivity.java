@@ -64,18 +64,33 @@ public class MainActivity extends AppCompatActivity {
 
         double regularPay;
         double overtimePay = 0;
-        double totalPay;
+        double totalPayBeforeTax;
 
         if (hoursWorked <= 40) {
             regularPay = hoursWorked * hourlyRate;
-            totalPay = regularPay;
+            totalPayBeforeTax = regularPay;
         } else {
             regularPay = 40 * hourlyRate;
             overtimePay = (hoursWorked - 40) * hourlyRate * 1.5;
-            totalPay = regularPay + overtimePay;
+            totalPayBeforeTax = regularPay + overtimePay;
         }
 
-        double tax = totalPay * 0.18;
+        // ✅ Tax and net pay
+        double tax = totalPayBeforeTax * 0.18;
+        double totalPayAfterTax = totalPayBeforeTax - tax;
+
+        // ✅ Show results
+        String result = "Regular Pay: $" + String.format("%.2f", regularPay) +
+                "\nOvertime Pay: $" + String.format("%.2f", overtimePay) +
+                "\nTotal Pay (before tax): $" + String.format("%.2f", totalPayBeforeTax) +
+                "\nTax (18%): $" + String.format("%.2f", tax) +
+                "\nTotal Pay (after tax): $" + String.format("%.2f", totalPayAfterTax);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Payment Summary")
+                .setMessage(result)
+                .setPositiveButton("OK", null)
+                .show();
 
     }
 

@@ -33,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Enable ActionBar back button
+        //Enable ActionBar back button
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -41,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity {
         // Find ListView
         ListView listView = findViewById(R.id.listViewPayments);
 
-        // Set adapter
+        //Set adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,

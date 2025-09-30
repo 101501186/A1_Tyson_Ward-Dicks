@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Get UI references
+        //Get UI references
         workHoursInput = findViewById(R.id.work_Hours);
         hourlyRateInput = findViewById(R.id.hours_Rate);
         btnSubmit = findViewById(R.id.btnSubmit);
 
-        // Handle Calculate button
+        //Handle Calculate button
         btnSubmit.setOnClickListener(v -> calculatePay());
     }
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             totalPayBeforeTax = regularPay + overtimePay;
         }
 
-        // Tax and net pay
+        //Tax and net pay
         double tax = totalPayBeforeTax * 0.18;
         double totalPayAfterTax = totalPayBeforeTax - tax;
 
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         // Add this record to the shared list
         DetailsActivity.paymentHistory.add(historyItem);
 
-        // Show results in a dialog
+        //Show results in a dialog
         String result = "Regular Pay: $" + String.format("%.2f", regularPay) +
                 "\nOvertime Pay: $" + String.format("%.2f", overtimePay) +
                 "\nTotal Pay (before tax): $" + String.format("%.2f", totalPayBeforeTax) +
@@ -108,14 +108,13 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    // Inflate menu
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
-    // Handle menu item click
+    //Handle menu item click
     @Override
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         if (item.getItemId() == R.id.action_view_list) {

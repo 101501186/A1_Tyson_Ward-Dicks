@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        if (hoursWorked < 0 || hourlyRate < 0) {
+            Toast.makeText(this, "Values must be positive.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 
 }

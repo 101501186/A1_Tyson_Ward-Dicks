@@ -62,6 +62,21 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        double regularPay;
+        double overtimePay = 0;
+        double totalPay;
+
+        if (hoursWorked <= 40) {
+            regularPay = hoursWorked * hourlyRate;
+            totalPay = regularPay;
+        } else {
+            regularPay = 40 * hourlyRate;
+            overtimePay = (hoursWorked - 40) * hourlyRate * 1.5;
+            totalPay = regularPay + overtimePay;
+        }
+
+        double tax = totalPay * 0.18;
+
     }
 
 }

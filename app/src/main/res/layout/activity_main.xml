@@ -15,14 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Hours Worked"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/hours_Rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Hourly Rate"
-        android:inputType="numberDecimal" />
+        android:inputType="text" />
 
     <Button
         android:id="@+id/btnSubmit"

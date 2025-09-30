@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        double hoursWorked, hourlyRate;
+        try {
+            hoursWorked = Double.parseDouble(hoursStr);
+            hourlyRate = Double.parseDouble(rateStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Invalid input. Please enter numbers only.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 
 }

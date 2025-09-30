@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
             totalPayBeforeTax = regularPay + overtimePay;
         }
 
-        // ✅ Tax and net pay
+        //  Tax and net pay
         double tax = totalPayBeforeTax * 0.18;
         double totalPayAfterTax = totalPayBeforeTax - tax;
 
-        // ✅ Show results
+        //  Show results
         String result = "Regular Pay: $" + String.format("%.2f", regularPay) +
                 "\nOvertime Pay: $" + String.format("%.2f", overtimePay) +
                 "\nTotal Pay (before tax): $" + String.format("%.2f", totalPayBeforeTax) +

@@ -1,5 +1,6 @@
 package com.example.a1_tyson_ward_dicks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText workHoursInput, hourlyRateInput;
     Button btnSubmit, btnViewList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,14 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
         btnViewList = findViewById(R.id.btnView_List);
 
-
+        // Handle Calculate button
         btnSubmit.setOnClickListener(v -> calculatePay());
+
+        // Handle View List button
+        btnViewList.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void calculatePay() {
@@ -79,7 +85,17 @@ public class MainActivity extends AppCompatActivity {
         double tax = totalPayBeforeTax * 0.18;
         double totalPayAfterTax = totalPayBeforeTax - tax;
 
-        //  Show results
+        // Build history record for DetailsActivity
+        String historyItem = "Hours: " + hoursWorked +
+                ", Rate: $" + String.format("%.2f", hourlyRate) +
+                ", Gross: $" + String.format("%.2f", totalPayBeforeTax) +
+                ", Tax: $" + String.format("%.2f", tax) +
+                ", Net: $" + String.format("%.2f", totalPayAfterTax);
+
+        // Add this record to the shared list
+        DetailsActivity.paymentHistory.add(historyItem);
+
+        // Show results in a dialog
         String result = "Regular Pay: $" + String.format("%.2f", regularPay) +
                 "\nOvertime Pay: $" + String.format("%.2f", overtimePay) +
                 "\nTotal Pay (before tax): $" + String.format("%.2f", totalPayBeforeTax) +
@@ -91,7 +107,5 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage(result)
                 .setPositiveButton("OK", null)
                 .show();
-
     }
-
 }

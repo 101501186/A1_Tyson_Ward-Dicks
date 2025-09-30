@@ -34,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
         hourlyRateInput = findViewById(R.id.hours_Rate);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnViewList = findViewById(R.id.btnView_List);
-        
+
 
     }
 
+    private void calculatePay() {
+        String hoursStr = workHoursInput.getText().toString().trim();
+        String rateStr = hourlyRateInput.getText().toString().trim();
 
+    }
 
 }
